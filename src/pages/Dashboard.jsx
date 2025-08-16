@@ -104,7 +104,7 @@ const Dashboard = () => {
       <div className="stats-summary">
         <div className="stat-card">
           <h3>Monthly Total</h3>
-          <p>${totalMonthly.toFixed(2)}</p>
+          <p>ZAR- R{totalMonthly.toFixed(2)}</p>
         </div>
         <div className="stat-card">
           <h3>Active Subscriptions</h3>
@@ -140,7 +140,7 @@ const Dashboard = () => {
                 <li key={sub.id} className="subscription-item">
                   <div className="sub-info">
                     <h3>{sub.name}</h3>
-                    <p>${sub.cost} · {sub.billingCycle}</p>
+                    <p>R{sub.cost} · {sub.billingCycle}</p>
                     <p>Next payment: {sub.nextPaymentDate}</p>
                   </div>
                   <div className="sub-actions">
@@ -179,7 +179,7 @@ const Dashboard = () => {
                     ] 
                   }} 
                 />
-                {sub.name}: ${sub.cost}
+                {sub.name}: R{sub.cost}
               </div>
             ))}
           </div>

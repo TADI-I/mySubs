@@ -4,7 +4,7 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 // ...existing code...
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
 // ...existing code...
 
 // Your web app's Firebase configuration
@@ -21,4 +21,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+export const serverTimestamp = () => firebase.firestore.FieldValue.serverTimestamp();
 export const googleProvider = new GoogleAuthProvider();
+
