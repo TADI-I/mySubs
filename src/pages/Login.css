@@ -108,12 +108,12 @@ background-image:
   right: 0;
 }
 
-.form-group {
+.form1-group {
   margin-bottom: 1rem;
   text-align: left;
 }
 
-.form-group label {
+.form1-group label {
   display: block;
   font-size: 0.85rem;
   font-weight: 500;
@@ -121,7 +121,7 @@ background-image:
   color: #444;
 }
 
-.form-group input {
+.form1-group input {
   width: 100%;
   padding: 0.65rem 0.75rem;
   border-radius: 6px;
@@ -131,7 +131,7 @@ background-image:
   transition: border 0.2s ease;
 }
 
-.form-group input:focus {
+.form1-group input:focus {
   border-color: #0d47a1;
   box-shadow: 0 0 0 2px rgba(13, 71, 161, 0.2);
 }
