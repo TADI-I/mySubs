@@ -4,7 +4,7 @@ import { collection, addDoc,writeBatch,doc,increment, serverTimestamp } from 'fi
 import { db, auth } from '../firebase-config';
 
 
-//import './AddSubscription.css';
+import './AddSubscription.css';
 
     const CATEGORIES = [
         { value: 'video', label: 'Video' },
