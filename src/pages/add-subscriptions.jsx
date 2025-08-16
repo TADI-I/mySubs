@@ -9,7 +9,7 @@ import { db, auth } from '../firebase-config';
     const CATEGORIES = [
         { value: 'video', label: 'Video' },
         { value: 'music', label: 'Music' },
-        { value: 'other', label: 'Other' }
+        { value: 'gaming', label: 'Gaming' }
       ];    
       
       const serviceCategories = [
@@ -42,10 +42,6 @@ import { db, auth } from '../firebase-config';
       "Xbox Game Pass",
       "Nintendo Switch Online"
     ]
-  },
-  {
-    name: "Other",
-    services: ["Custom Service"]
   }
 ];
 

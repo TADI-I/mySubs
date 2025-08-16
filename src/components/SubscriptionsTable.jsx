@@ -91,7 +91,7 @@ const paymentUrls = {
             return (
               <tr key={sub.id} className={statusClass}>
                 <td>{sub.name}</td>
-                <td>${sub.cost} ({sub.billingCycle})</td>
+                <td>R{sub.cost} ({sub.billingCycle})</td>
                 <td>{sub.nextPaymentDate}</td>
                 <td>
                   <span className="status-badge">
