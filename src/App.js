@@ -1,11 +1,15 @@
 import React from 'react';
-import Login from './pages/Login.jsx'; // Fixed import path and case
+import Login from './pages/Login.jsx'; // Keep the import with .jsx extension if your file is named that
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="app">
-      <Login /> {/* Fixed component name (PascalCase) */}
-    </div>
+    <Router>
+      <Routes>
+        {/* URL path should not include .jsx */}
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </Router>
   );
 }
 
