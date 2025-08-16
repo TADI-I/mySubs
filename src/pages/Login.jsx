@@ -5,7 +5,7 @@ import { signInWithEmailAndPassword, signInWithPopup, createUserWithEmailAndPass
 import { doc, setDoc, getDoc } from 'firebase/firestore';
 import { Link } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
-//import './Login.css'; // Basic styling (see below)
+import './Login.css'; // Basic styling (see below)
 
 const Login = () => {
   const [email, setEmail] = useState('');
