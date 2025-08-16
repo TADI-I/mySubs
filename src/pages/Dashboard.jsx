@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { FiLogOut, FiPlusCircle, FiTrash2, FiEdit2 } from 'react-icons/fi';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
+import SubscriptionsTable from '../components/SubscriptionsTable';
 import './Dashboard.css'; // Create this file for styling
 
 ChartJS.register(ArcElement, Tooltip, Legend);
@@ -145,7 +146,7 @@ const Dashboard = () => {
                   </div>
                   <div className="sub-actions">
                     <button 
-                      onClick={() => navigate(`/edit-subscription/${sub.id}`)}
+                      onClick={() => navigate(`/EditSubscriptionModal/${sub.id}`)}
                       className="icon-btn"
                     >
                       <FiEdit2 />
@@ -183,6 +184,12 @@ const Dashboard = () => {
               </div>
             ))}
           </div>
+        </section>
+
+        <section className="analytics-section">
+            <h2>Subscriptions Table</h2>    
+            <SubscriptionsTable subscriptions={subscriptions} />
+
         </section>
       </div>
     </div>

@@ -1,0 +1,76 @@
+.subscriptions-table-container {
+  overflow-x: auto;
+  margin: 20px 0;
+}
+
+.subscriptions-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.subscriptions-table th, 
+.subscriptions-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.subscriptions-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+}
+
+/* Status Colors */
+.status-active {
+  background-color: rgba(40, 167, 69, 0.1);
+}
+.status-active .status-badge {
+  color: #28a745;
+  font-weight: 500;
+}
+
+.status-warning {
+  background-color: rgba(255, 193, 7, 0.1);
+}
+.status-warning .status-badge {
+  color: #ffc107;
+  font-weight: 500;
+}
+
+.status-paused {
+  background-color: rgba(253, 126, 20, 0.1);
+}
+.status-paused .status-badge {
+  color: #fd7e14;
+  font-weight: 500;
+}
+
+.status-inactive {
+  background-color: rgba(108, 117, 125, 0.1);
+}
+.status-inactive .status-badge {
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.payment-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background-color 0.2s;
+}
+
+.payment-button:hover {
+  background-color: #0069d9;
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+  color: #6c757d;
+}

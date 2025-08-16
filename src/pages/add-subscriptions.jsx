@@ -12,6 +12,42 @@ import { db, auth } from '../firebase-config';
         { value: 'other', label: 'Other' }
       ];    
       
+      const serviceCategories = [
+  {
+    name: "Streaming & Entertainment",
+    services: [
+      "DStv ",
+      "Showmax ",
+      "Netflix ",
+      "Amazon Prime Video ",
+      "Disney+ ",
+      "Apple TV+ ",
+      "YouTube Premium "
+    ]
+  },
+  {
+    name: "Music & Audio",
+    services: [
+      "Spotify (Music streaming)",
+      "Apple Music",
+      "Deezer",
+      "SoundCloud Go",
+      "Audiobook "
+    ]
+  },
+  {
+    name: "Gaming",
+    services: [
+      "PlayStation Plus ",
+      "Xbox Game Pass",
+      "Nintendo Switch Online"
+    ]
+  },
+  {
+    name: "Other",
+    services: ["Custom Service"]
+  }
+];
 
 const AddSubscription = () => {
   const navigate = useNavigate();
@@ -139,16 +175,27 @@ const handleSubmit = async (e) => {
       <h2>Add New Subscription</h2>
       
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Service Name *</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            placeholder="Netflix, Spotify, etc."
-          />
+    <div className="form-group">
+        <label>Service Name *</label>
+        <select
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+          className="service-dropdown"
+        >
+          <option value="">Select a service...</option>
+          
+          {serviceCategories.map((category) => (
+            <optgroup key={category.name} label={category.name}>
+              {category.services.map((service) => (
+                <option key={service} value={service}>
+                  {service}
+                </option>
+              ))}
+            </optgroup>
+          ))}
+        </select>
         </div>
 
         <div className="form-row">
