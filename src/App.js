@@ -2,7 +2,7 @@ import React from 'react';
 import Login from './pages/Login.jsx';
 import Dashboard from './pages/Dashboard.jsx'; 
 import AddSubscription from './pages/add-subscriptions.jsx';
-import EditSubscriptionModal from './components/EditSubscriptionModal.jsx'; // Keep the import with .jsx extension if your file is named that
+import EditSubscriptionModal from './components/edit-subscription.jsx'; // Keep the import with .jsx extension if your file is named that
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ProtectedRoute from './components/ProtectedRoute.jsx'; // Ensure this is the correct path
 

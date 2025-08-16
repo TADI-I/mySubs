@@ -69,7 +69,7 @@ const Dashboard = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      navigate('/login');
+      navigate('/');
     } catch (error) {
       console.error('Logout error:', error);
     }
@@ -146,7 +146,7 @@ const Dashboard = () => {
                   </div>
                   <div className="sub-actions">
                     <button 
-                      onClick={() => navigate(`/EditSubscriptionModal/${sub.id}`)}
+                      onClick={() => navigate(`/edit-subscription/${sub.id}`)}
                       className="icon-btn"
                     >
                       <FiEdit2 />

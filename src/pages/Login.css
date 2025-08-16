@@ -10,26 +10,35 @@ body {
   height: 100vh;
 
   background-color: #0d47a1;
-  background-image: 
+background-image: 
     url(/src/assets/netflix.png),
     url(/src/assets/prime.png),
     url(/src/assets/disney.png),
     url(/src/assets/youtube.png),
     url(/src/assets/spotify.png),
-    url(/src/assets/apple.png);
-  background-repeat: repeat-x, repeat-x, repeat-x, repeat-x, repeat-x, repeat-x;
-  background-size: 120px auto, 120px auto, 120px auto, 120px auto, 120px auto, 120px auto;
+    url(/src/assets/apple.png),
+    linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.3)); /* subtle overlay */
+  
+  background-repeat: repeat-x;
+  background-size: 100px auto;
   background-position: 
-    top 5% left,    /* Netflix row */
-    top 20% left,   /* Prime row */
-    top 35% left,   /* Disney row */
-    top 50% left,   /* YouTube row */
-    top 65% left,   /* Spotify row */
-    top 80% left;   /* Apple row */
+    top 5% left,
+    top 20% left,
+    top 35% left,
+    top 50% left,
+    top 65% left,
+    top 80% left,
+    0 0; /* gradient overlay */
+
   background-attachment: fixed;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  backdrop-filter: blur(4px);
+  position: relative;
+  z-index: 1;
+
 }
-
-
 .login-container {
   display: flex;
   justify-content: center;
