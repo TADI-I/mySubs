@@ -100,7 +100,7 @@ const Login = () => {
         
         <form onSubmit={handleAuth}>
           {!isLogin && (
-            <div className="form-group">
+            <div className="form1-group">
               <label>Name</label>
               <input
                 type="text"
@@ -111,7 +111,7 @@ const Login = () => {
             </div>
           )}
           
-          <div className="form-group">
+          <div className="form1-group">
             <label>Email</label>
             <input
               type="email"
@@ -121,7 +121,7 @@ const Login = () => {
             />
           </div>
           
-          <div className="form-group">
+          <div className="form1-group">
             <label>Password</label>
             <input
               type="password"
