@@ -17,6 +17,27 @@ const SubscriptionsTable = () => {
       querySnapshot.forEach((doc) => {
         subs.push({ id: doc.id, ...doc.data() });
       });
+
+      // If no subscriptions, add a hard-coded cancelled one for demo
+      if (subs.length === 0) {
+        subs.push({
+          id: 'demo-cancelled',
+          name: 'Netflix',
+          cost: 199,
+          billingCycle: 'Monthly',
+          nextPaymentDate: '2025-09-01',
+          status: 'cancelled'
+        },
+     {
+            id: 'demo-overdue',
+            name: 'Spotify',
+            cost: 59,
+            billingCycle: 'Monthly',
+            nextPaymentDate: '2025-07-01', // Past date to show overdue
+            status: 'pending'
+          });
+      }
+
       setSubscriptions(subs);
       setLoading(false);
     });
