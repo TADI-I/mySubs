@@ -16,6 +16,7 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [totalMonthly, setTotalMonthly] = useState(0);
   const [user, setUser] = useState(null);
+  const [recommendations, setRecommendations] = useState([]);
   const navigate = useNavigate();
 
   // Fetch user data and subscriptions
@@ -87,6 +88,173 @@ const Dashboard = () => {
       borderWidth: 1,
     }]
   };
+
+  // 1. Define Service Catalog with Feature Matrix
+const streamingServices = {
+  'netflix': {
+    tiers: [
+      { name: 'Mobile', price: 99, resolution: '480p', screens: 1 },
+      { name: 'Basic', price: 139, resolution: '720p', screens: 1 },
+      { name: 'Standard', price: 199, resolution: '1080p', screens: 2 },
+      { name: 'Premium', price: 299, resolution: '4K', screens: 4 }
+    ],
+    familySharing: true,
+    freeTrial: true
+  },
+  'showmax': {
+    tiers: [
+      { name: 'Entertainment', price: 99, resolution: '1080p', screens: 2 },
+      { name: 'Pro', price: 249, resolution: '1080p', screens: 2 } 
+    ],
+    bundleDiscounts: { dstv: 20 } // 20% off with DStv
+  },
+  // ... Add other services
+};
+
+// 2. User Profile Analysis
+function analyzeUsage(user) {
+  return {
+    monthlyHours: user.viewingHours / 30,
+    devicesUsed: user.devices.length,
+    contentTypes: user.mostWatchedGenres,
+    sharing: user.familyMembers > 1
+  };
+}
+
+// 3. Recommendation Algorithm
+function getOptimizedPlan(userSubscriptions, user) {
+  const recommendations = [];
+  
+  userSubscriptions.forEach(sub => {
+    const service = streamingServices[sub.name.toLowerCase()];
+    if (!service) return;
+
+    // Current plan analysis
+    const currentTier = service.tiers.find(t => t.name === sub.plan);
+    const usage = analyzeUsage(user);
+
+    // 1. Downgrade recommendation
+    const suitableTiers = service.tiers.filter(tier => (
+      usage.devicesUsed <= tier.screens &&
+      (usage.monthlyHours > 10 ? tier.resolution === '1080p' : true)
+    ));
+    const cheaperOption = suitableTiers.find(t => t.price < currentTier.price);
+    if (cheaperOption) {
+      recommendations.push({
+        service: sub.name,
+        action: 'DOWNGRADE',
+        fromPlan: currentTier.name,
+        toPlan: cheaperOption.name,
+        monthlySavings: currentTier.price - cheaperOption.price,
+        rationale: `Your usage fits ${cheaperOption.name} tier`
+      });
+    }
+
+    // 2. Upgrade recommendation (simulate: if user watches a lot)
+    if (usage.monthlyHours > 60 && currentTier.name !== 'Premium') {
+      const premiumTier = service.tiers.find(t => t.name === 'Premium');
+      if (premiumTier && premiumTier.price > currentTier.price) {
+        recommendations.push({
+          service: sub.name,
+          action: 'UPGRADE',
+          fromPlan: currentTier.name,
+          toPlan: premiumTier.name,
+          extraCost: premiumTier.price - currentTier.price,
+          rationale: 'You watch a lot, consider Premium for best experience'
+        });
+      }
+    }
+
+    // 3. Cancel recommendation (simulate: if user watches very little)
+    if (usage.monthlyHours < 2) {
+      recommendations.push({
+        service: sub.name,
+        action: 'CANCEL',
+        rationale: 'You barely use this service. Consider cancelling to save money.',
+        monthlySavings: currentTier.price
+      });
+    }
+
+    // 4. Bundle opportunities
+    if (service.bundleDiscounts) {
+      Object.entries(service.bundleDiscounts).forEach(([partner, discount]) => {
+        if (userSubscriptions.some(s => s.name.toLowerCase() === partner)) {
+          recommendations.push({
+            service: sub.name,
+            action: 'BUNDLE',
+            withService: partner,
+            discount: `${discount}% off`,
+            estimatedSavings: (currentTier.price * discount / 100).toFixed(2)
+          });
+        }
+      });
+    }
+
+    // 5. Switch recommendation (simulate: if another service is cheaper)
+    Object.entries(streamingServices).forEach(([otherName, otherService]) => {
+      if (otherName !== sub.name.toLowerCase()) {
+        const cheapestOther = otherService.tiers.reduce((min, t) => t.price < min.price ? t : min, otherService.tiers[0]);
+        if (cheapestOther.price < currentTier.price) {
+          recommendations.push({
+            service: sub.name,
+            action: 'SWITCH',
+            toService: otherName,
+            toPlan: cheapestOther.name,
+            monthlySavings: currentTier.price - cheapestOther.price,
+            rationale: `Switch to ${otherName} for a cheaper plan`
+          });
+        }
+      }
+    });
+  });
+
+  // Simulate recommendations if none found
+  if (recommendations.length === 0) {
+    recommendations.push(
+      {
+        service: 'Showmax',
+        action: 'TRY',
+        rationale: 'Try Showmax for more local content.',
+        estimatedSavings: 0
+      },
+      {
+        service: 'Netflix',
+        action: 'REFER',
+        rationale: 'Refer a friend to Netflix and get a free month!',
+        estimatedSavings: 99
+      }
+    );
+  }
+
+  return recommendations.sort((a, b) => (b.monthlySavings || 0) - (a.monthlySavings || 0));
+}
+
+function SavingsRecommendations() {
+  const [recommendations, setRecs] = useState([]);
+
+  useEffect(() => {
+    getOptimizedPlan(userSubscriptions).then(setRecs);
+  }, []);
+}
+
+  // Compute recommendations when subscriptions or user change
+  useEffect(() => {
+    if (user && subscriptions.length > 0) {
+      // You may need to pass user profile info if required by analyzeUsage
+      const userProfile = {
+        viewingHours: 30, // example value
+        devices: ['TV', 'Phone'],
+        mostWatchedGenres: ['Drama'],
+        familyMembers: 2
+      };
+      // Add plan info to subscriptions if needed
+      const subsWithPlan = subscriptions.map(sub => ({
+        ...sub,
+        plan: sub.plan || 'Standard' // fallback if plan missing
+      }));
+      setRecommendations(getOptimizedPlan(subsWithPlan, userProfile));
+    }
+  }, [subscriptions, user]);
 
   if (loading) return <div className="loading">Loading...</div>;
 
@@ -190,6 +358,23 @@ const Dashboard = () => {
             <h2>Subscriptions Table</h2>    
             <SubscriptionsTable subscriptions={subscriptions} />
 
+        </section>
+
+        <section className="analytics-section">
+          <h2>Recommendations</h2><div className="savings-card">
+      <h3>Streaming Optimizer</h3>
+      {recommendations.map((rec, i) => (
+        <div key={i} className="recommendation">
+          <div className={`action-${rec.action.toLowerCase()}`}>
+            {rec.action}: {rec.service}
+          </div>
+          <p>Save R{rec.monthlySavings || rec.estimatedSavings}/month</p>
+          <button onClick={() => applyRecommendation(rec)}>
+            Apply This Change
+          </button>
+        </div>
+      ))}
+    </div>
         </section>
       </div>
     </div>

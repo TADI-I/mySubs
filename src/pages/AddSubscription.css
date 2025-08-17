@@ -1,19 +1,19 @@
-/* AddSubscription.css */
+/* Telkom Theme - AddSubscription.css */
 .add-subscription-container {
   max-width: 900px;
   margin: 2rem auto;
   padding: 2.5rem;
-  background-color: #1a237e;
-  color: #ffffff;
+  background-color: #009de0; /* Telkom blue */
+  color: #fff;
   border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .add-subscription-container h2 {
   text-align: center;
   margin-bottom: 2rem;
-  color: #ffffff;
+  color: #fff;
   font-size: 2rem;
   font-weight: 600;
 }
@@ -32,7 +32,7 @@ form {
 
 .form-group label {
   font-weight: 500;
-  color: #bbdefb;
+  color: #e0f7fa;
   font-size: 1rem;
 }
 
@@ -40,13 +40,13 @@ form {
 .service-dropdown {
   padding: 0.875rem 1rem;
   border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  border: 1px solid #b3e5fc;
+  background-color: #e6f7fd;
+  color: #00395a;
   font-size: 1rem;
   transition: all 0.3s ease;
   appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23009de0'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right 1rem center;
   background-size: 1.25rem;
@@ -54,12 +54,12 @@ form {
 
 .service-dropdown:focus {
   outline: none;
-  border-color: #2196f3;
-  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.3);
+  border-color: #009de0;
+  box-shadow: 0 0 0 3px rgba(0, 157, 224, 0.18);
 }
 
 .service-dropdown optgroup {
-  color: #90caf9;
+  color: #007bb5;
   font-weight: 500;
   font-style: normal;
   padding: 0.5rem 0;
@@ -67,7 +67,8 @@ form {
 
 .service-dropdown option {
   padding: 0.5rem 1rem;
-  background-color: #1a237e;
+  background-color: #e6f7fd;
+  color: #00395a;
 }
 
 /* Form inputs styling */
@@ -76,9 +77,9 @@ form {
 .form-group textarea {
     padding: 10px;
     border-radius: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    background-color: rgb(49 57 139);
-    color: #dfd5d5;
+    border: 1px solid #b3e5fc;
+    background-color: #e6f7fd;
+    color: #00395a;
     font-size: 1rem;
     transition: all 0.3s ease;
     width: 100%;
@@ -88,13 +89,13 @@ form {
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #2196f3;
-  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.3);
+  border-color: #009de0;
+  box-shadow: 0 0 0 3px rgba(0, 157, 224, 0.18);
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: rgba(255, 255, 255, 0.5);
+  color: #90caf9;
 }
 
 /* Form row layout */
@@ -145,12 +146,12 @@ textarea {
 }
 
 .form-actions button[type="submit"] {
-  background-color: #2196f3;
+  background-color: #007bb5;
   color: white;
 }
 
 .form-actions button[type="submit"]:hover {
-  background-color: #1976d2;
+  background-color: #005e8a;
 }
 
 .form-actions button[type="submit"]:disabled {
@@ -161,17 +162,18 @@ textarea {
 
 .form-actions button.secondary {
   background-color: transparent;
-  color: #90caf9;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #009de0;
+  border: 1px solid #b3e5fc;
 }
 
 .form-actions button.secondary:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #e6f7fd;
+  color: #007bb5;
 }
 
 /* Date picker styling */
 input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(1);
+  filter: invert(54%) sepia(99%) saturate(747%) hue-rotate(163deg) brightness(92%) contrast(92%);
   opacity: 0.7;
   cursor: pointer;
 }

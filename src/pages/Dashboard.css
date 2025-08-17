@@ -1,11 +1,21 @@
 /* Dashboard.css */
-.dashboard-container {
-    width: 80%;
-  min-height: 100vh;
-  background-color: #1a237e; /* Dark blue background */
-  color: #ffffff;
-  padding: 20px;
+
+body {
+  margin: 0;
+  padding: 0;
+ 
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dashboard-container {
+  width: 80%;
+  min-height: 80vh;
+  margin: 40px auto 40px auto; /* Top and bottom margin for breathing room */
+  background-color: #009de0;
+  color: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
 }
 
 .dashboard-header {
@@ -14,13 +24,13 @@
   align-items: center;
   margin-bottom: 30px;
   padding-bottom: 15px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .dashboard-header h1 {
   font-size: 2rem;
   margin: 0;
-  color: #ffffff;
+  color: #fff;
 }
 
 .user-actions {
@@ -34,7 +44,7 @@
 }
 
 .logout-btn {
-  background-color: #3949ab;
+  background-color: #00b6f0; /* lighter Telkom blue */
   color: white;
   border: none;
   padding: 8px 15px;
@@ -47,7 +57,7 @@
 }
 
 .logout-btn:hover {
-  background-color: #303f9f;
+  background-color: #007bb5; /* darker Telkom blue */
 }
 
 .stats-summary {
@@ -57,18 +67,18 @@
 }
 
 .stat-card {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.12);
   padding: 20px;
   border-radius: 8px;
   flex: 1;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
 }
 
 .stat-card h3 {
   margin-top: 0;
   margin-bottom: 10px;
   font-size: 1rem;
-  color: #bbdefb;
+  color: #e0f7fa;
 }
 
 .stat-card p {
@@ -84,10 +94,10 @@
 }
 
 .subscriptions-list, .analytics-section {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
 }
 
 .list-header {
@@ -100,10 +110,11 @@
 .list-header h2 {
   margin: 0;
   font-size: 1.5rem;
+  color: #fff;
 }
 
 .add-btn {
-  background-color: #2196f3;
+  background-color: #00b6f0;
   color: white;
   border: none;
   padding: 8px 15px;
@@ -111,12 +122,6 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.add-btn:hover {
-  background-color: #1976d2;
 }
 
 .empty-state {
@@ -129,7 +134,7 @@
 }
 
 .primary-btn {
-  background-color: #2196f3;
+  background-color: #00b6f0;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -139,7 +144,7 @@
 }
 
 .primary-btn:hover {
-  background-color: #1976d2;
+  background-color: #007bb5;
 }
 
 .subscription-items {
@@ -149,7 +154,7 @@
 }
 
 .subscription-item {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0.13);
   border-radius: 6px;
   padding: 15px;
   margin-bottom: 15px;
@@ -161,16 +166,18 @@
 
 .subscription-item:hover {
   transform: translateY(-2px);
+  box-shadow: 0 2px 12px rgba(0, 157, 224, 0.12);
 }
 
 .sub-info h3 {
   margin: 0 0 5px 0;
   font-size: 1.1rem;
+  color: #fff;
 }
 
 .sub-info p {
   margin: 3px 0;
-  color: #bbdefb;
+  color: #b3e5fc;
   font-size: 0.9rem;
 }
 
@@ -181,7 +188,7 @@
 
 .icon-btn {
   background-color: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   color: white;
   width: 32px;
   height: 32px;
@@ -194,7 +201,7 @@
 }
 
 .icon-btn:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 182, 240, 0.12);
 }
 
 .icon-btn.danger {
@@ -210,6 +217,7 @@
   margin-top: 0;
   margin-bottom: 20px;
   font-size: 1.5rem;
+  color: #fff;
 }
 
 .chart-container {
@@ -224,13 +232,14 @@
 }
 
 .category-tag {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 182, 240, 0.18);
   padding: 8px 12px;
   border-radius: 20px;
   font-size: 0.85rem;
   display: flex;
   align-items: center;
   gap: 5px;
+  color: #007bb5;
 }
 
 .color-dot {
@@ -241,7 +250,7 @@
 }
 
 .loading {
-  color: white;
+  color: #fff;
   text-align: center;
   padding: 50px;
   font-size: 1.2rem;

@@ -9,7 +9,7 @@ body {
   align-items: center;
   height: 100vh;
 
-  background-color: #0d47a1;
+  background-color: #009de0;
 background-image: 
     url(/src/assets/netflix.png),
     url(/src/assets/prime.png),
@@ -60,7 +60,7 @@ background-image:
 
 .login-card h2 {
   margin-bottom: 1.5rem;
-  color: #0d47a1;
+  color: #009de0;
 }
 
 .google-btn {
@@ -149,7 +149,7 @@ background-image:
 button[type="submit"] {
   width: 100%;
   padding: 0.75rem;
-  background: #0d47a1;
+  background: #009de0;
   color: #fff;
   font-size: 1rem;
   font-weight: 600;
@@ -160,7 +160,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background: #08306b;
+  background: #007bb5;
 }
 
 button[type="submit"]:disabled {
@@ -177,7 +177,7 @@ button[type="submit"]:disabled {
 .toggle-auth button {
   background: none;
   border: none;
-  color: #0d47a1;
+  color: #009de0;
   font-weight: 600;
   cursor: pointer;
 }
@@ -192,7 +192,7 @@ button[type="submit"]:disabled {
 
 .forgot-password a {
   font-size: 0.85rem;
-  color: #0d47a1;
+  color: #009de0;
   text-decoration: none;
 }
 
