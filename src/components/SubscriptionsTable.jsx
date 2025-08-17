@@ -81,11 +81,23 @@ const paymentUrls = {
   // Gaming
   'playstation plus': 'https://store.playstation.com/en-us/subscriptions',
   'xbox game pass': 'https://account.microsoft.com/services',
-  'nintendo switch online': 'https://accounts.nintendo.com/subscriptions'
+  'nintendo switch online': 'https://accounts.nintendo.com/subscriptions',
+
+  // Connectivity (Telkom)
+  'telkom lte': 'https://selfservice.telkom.co.za/rococo/public/content/interstitial',
+  'telkom fibre': 'https://selfservice.telkom.co.za/rococo/public/content/interstitial',
+  'telkom mobile data': 'https://selfservice.telkom.co.za/rococo/public/content/interstitial',
+  'telkom': 'https://selfservice.telkom.co.za/rococo/public/content/interstitial'
 };
 
     const serviceKey = serviceName.toLowerCase().split(' ')[0];
-    const url = paymentUrls[serviceKey] || '#';
+    let url = paymentUrls[serviceKey];
+
+    // Fallback: Try full service name if not found by first word
+    if (!url) {
+      url = paymentUrls[serviceName.toLowerCase().trim()] || '#';
+    }
+
     window.open(url, '_blank');
   };
 
