@@ -19,7 +19,7 @@ const SubscriptionsTable = () => {
       });
 
       // If no subscriptions, add a hard-coded cancelled one for demo
-      if (subs.length === 0) {
+      
         subs.push({
           id: 'demo-cancelled',
           name: 'Netflix',
@@ -36,7 +36,7 @@ const SubscriptionsTable = () => {
             nextPaymentDate: '2025-07-01', // Past date to show overdue
             status: 'pending'
           });
-      }
+      
 
       setSubscriptions(subs);
       setLoading(false);
