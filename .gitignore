@@ -1,1 +1,7 @@
 node_modules/
+
+# Firebase and environment files
+.env
+.env.local
+.firebase/
+.firebaserc
